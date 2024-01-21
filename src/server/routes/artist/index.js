@@ -35,7 +35,11 @@ module.exports = function (router) {
     const artist = await Artist.findByPk(req.params.id);
     console.log(req.body);
     const updatedArtist = await Artist.update(
-      { name: req.body.name },
+      {
+        name: req.body.name,
+        description: req.body.description,
+        label: req.body.label,
+      },
       {
         where: { id: artist.id },
       }
