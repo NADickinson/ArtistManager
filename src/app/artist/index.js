@@ -1,6 +1,5 @@
 import React from 'react';
 import { withParams, withNavigate } from '../router-utils';
-
 import api from '../api';
 
 class Artist extends React.Component {
@@ -52,7 +51,7 @@ class Artist extends React.Component {
         <button
           onClick={async () => {
             const { artist } = this.state;
-            let initalPost = await api('/artists/' + artist.id, {
+            const initalPost = await api('/artists/' + artist.id, {
               method: 'POST',
               body: artist,
             });
@@ -64,7 +63,20 @@ class Artist extends React.Component {
           Save
         </button>
 
-        <button onClick={this.delete}>Delete</button>
+        <button
+          onClick={async () => {
+            const { artist } = this.state;
+            const artistToDelete = await api('/artists/' + artist.id, {
+              method: 'DELETE',
+              body: artist,
+            });
+            console.log(artistToDelete);
+            withNavigate(Artist);
+            this.props.navigate('/');
+          }}
+        >
+          Delete
+        </button>
       </div>
     );
   }

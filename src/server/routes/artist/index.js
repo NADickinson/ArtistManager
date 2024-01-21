@@ -1,6 +1,6 @@
 const express = require('express');
 
-const { Artist } = require('../../database');
+const { Artist, sequelize } = require('../../database');
 
 module.exports = function (router) {
   /**
@@ -24,8 +24,14 @@ module.exports = function (router) {
   /**
    * Create a new artist
    */
-  router.put('/artists', function (req, res) {
-    throw new Error('Not implemented');
+  router.put('/artists', async function (req, res) {
+    const newArtist = await Artist.create({
+      name: req.body.name,
+      description: req.body.description,
+      label: req.body.label,
+    });
+    const newArtistResponse = await Artist.findByPk(newArtist.id);
+    res.json(newArtistResponse);
   });
 
   /**
@@ -33,7 +39,7 @@ module.exports = function (router) {
    */
   router.post('/artists/:id', async function (req, res) {
     const artist = await Artist.findByPk(req.params.id);
-    console.log(req.body);
+
     const updatedArtist = await Artist.update(
       {
         name: req.body.name,
@@ -50,7 +56,13 @@ module.exports = function (router) {
   /**
    * Delete an artist
    */
-  router.delete('/artists/:id', function (req, res) {
-    throw new Error('Not implemented');
+  router.delete('/artists/:id', async function (req, res) {
+    const artist = await Artist.findByPk(req.params.id);
+    const deletedArtist = await artist.destroy({
+      where: {
+        id: artist.id,
+      },
+    });
+    res.json(artist);
   });
 };
