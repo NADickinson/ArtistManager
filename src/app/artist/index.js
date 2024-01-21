@@ -58,6 +58,8 @@ class Artist extends React.Component {
 
             const response = initalPost;
             console.log(response);
+            withNavigate(Artist);
+            this.props.navigate('/');
           }}
         >
           Save
