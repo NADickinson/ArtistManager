@@ -25,7 +25,7 @@ class Artist extends React.Component {
     return (
       <div className="artist">
         <div className="width_fill">
-          <div className="artist_name">
+          <div className="artist_form">
             <div style={{ flex: 1 }}>
               <legend>Artist Name:</legend>
               <TextField
@@ -43,7 +43,7 @@ class Artist extends React.Component {
         </div>
 
         <div className="width_fill">
-          <div className="artist_name">
+          <div className="artist_form">
             <div style={{ flex: 1 }}>
               <legend>Description:</legend>
               <TextField
@@ -64,7 +64,7 @@ class Artist extends React.Component {
           </div>
         </div>
         <div className="width_fill">
-          <div className="artist_name">
+          <div className="artist_form">
             <div style={{ flex: 1 }}>
               <legend>Record label:</legend>
               <TextField
@@ -80,37 +80,39 @@ class Artist extends React.Component {
             </div>
           </div>
         </div>
-        <PrimaryButton
-          onClick={async () => {
-            const { artist } = this.state;
-            const initalPost = await api('/artists/' + artist.id, {
-              method: 'POST',
-              body: artist,
-            });
+        <div className="width_fill" style={{ gap: '20px' }}>
+          <PrimaryButton
+            onClick={async () => {
+              const { artist } = this.state;
+              const initalPost = await api('/artists/' + artist.id, {
+                method: 'POST',
+                body: artist,
+              });
 
-            const response = initalPost;
-            console.log(response);
-            withNavigate(Artist);
-            this.props.navigate('/');
-          }}
-        >
-          Save
-        </PrimaryButton>
+              const response = initalPost;
+              console.log(response);
+              withNavigate(Artist);
+              this.props.navigate('/');
+            }}
+          >
+            Save
+          </PrimaryButton>
 
-        <PrimaryButton
-          onClick={async () => {
-            const { artist } = this.state;
-            const artistToDelete = await api('/artists/' + artist.id, {
-              method: 'DELETE',
-              body: artist,
-            });
-            console.log(artistToDelete);
-            withNavigate(Artist);
-            this.props.navigate('/');
-          }}
-        >
-          Delete
-        </PrimaryButton>
+          <PrimaryButton
+            onClick={async () => {
+              const { artist } = this.state;
+              const artistToDelete = await api('/artists/' + artist.id, {
+                method: 'DELETE',
+                body: artist,
+              });
+              console.log(artistToDelete);
+              withNavigate(Artist);
+              this.props.navigate('/');
+            }}
+          >
+            Delete
+          </PrimaryButton>
+        </div>
       </div>
     );
   }

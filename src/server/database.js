@@ -22,6 +22,10 @@ const Artist =
     label: {
       type: DataTypes.STRING,
     },
+    data: {
+      type: DataTypes.BLOB('long'),
+      allowNull: false,
+    },
   });
 
 if (isFirstConnection) {
