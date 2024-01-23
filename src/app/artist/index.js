@@ -24,31 +24,62 @@ class Artist extends React.Component {
 
     return (
       <div className="artist">
-        <fieldset>
-          <legend>Artist Name:</legend>
-          <TextField
-            value={artist.name}
-            onChange={(event) => this.change('name', event.target.value)}
-          />
-        </fieldset>
+        <div className="width_fill">
+          <div className="artist_name">
+            <div style={{ flex: 1 }}>
+              <legend>Artist Name:</legend>
+              <TextField
+                borderless={true}
+                styles={{
+                  field: {
+                    backgroundColor: 'rgba(250, 139, 255,0.3);',
+                  },
+                }}
+                value={artist.name}
+                onChange={(event) => this.change('name', event.target.value)}
+              />
+            </div>
+          </div>
+        </div>
 
-        <fieldset>
-          <legend>Description:</legend>
-          <TextField
-            multiline
-            rows={3}
-            value={artist.description}
-            onChange={(event) => this.change('description', event.target.value)}
-          />
-        </fieldset>
-
-        <fieldset>
-          <legend>Record label:</legend>
-          <TextField
-            value={artist.label}
-            onChange={(event) => this.change('label', event.target.value)}
-          />
-        </fieldset>
+        <div className="width_fill">
+          <div className="artist_name">
+            <div style={{ flex: 1 }}>
+              <legend>Description:</legend>
+              <TextField
+                borderless={true}
+                styles={{
+                  field: {
+                    backgroundColor: 'rgba(250, 139, 255,0.3)',
+                  },
+                }}
+                multiline
+                rows={3}
+                value={artist.description}
+                onChange={(event) =>
+                  this.change('description', event.target.value)
+                }
+              />
+            </div>
+          </div>
+        </div>
+        <div className="width_fill">
+          <div className="artist_name">
+            <div style={{ flex: 1 }}>
+              <legend>Record label:</legend>
+              <TextField
+                borderless={true}
+                styles={{
+                  field: {
+                    backgroundColor: 'rgba(250, 139, 255,0.3);',
+                  },
+                }}
+                value={artist.label}
+                onChange={(event) => this.change('label', event.target.value)}
+              />
+            </div>
+          </div>
+        </div>
         <PrimaryButton
           onClick={async () => {
             const { artist } = this.state;
