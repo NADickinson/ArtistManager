@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-
+import { PrimaryButton } from '@fluentui/react/lib/Button';
+import { TextField } from '@fluentui/react/lib/TextField';
 import api from '../api';
 
 export default class Artists extends React.Component {
@@ -19,28 +20,26 @@ export default class Artists extends React.Component {
     return (
       <div className="artists_container">
         <div className="artists_menu">
-          <input
-            type="text"
+          <TextField
             placeholder="name"
             onChange={(e) => {
               this.setState({ nameToAdd: e.target.value });
             }}
-          ></input>
-          <input
-            type="text"
+          ></TextField>
+          <TextField
             placeholder="Label"
             onChange={(e) => {
               this.setState({ labelToAdd: e.target.value });
             }}
-          ></input>
-          <input
+          ></TextField>
+          <TextField
             type="text"
             placeholder="description"
             onChange={(e) => {
               this.setState({ descriptionToAdd: e.target.value });
             }}
-          ></input>
-          <button
+          ></TextField>
+          <PrimaryButton
             onClick={async () => {
               if (this.state.nameToAdd === undefined) {
                 return;
@@ -63,7 +62,7 @@ export default class Artists extends React.Component {
             }}
           >
             Add
-          </button>
+          </PrimaryButton>
         </div>
 
         {this.renderList()}

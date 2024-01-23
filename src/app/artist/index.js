@@ -1,6 +1,8 @@
 import React from 'react';
 import { withParams, withNavigate } from '../router-utils';
 import api from '../api';
+import { PrimaryButton } from '@fluentui/react/lib/Button';
+import { TextField } from '@fluentui/react/lib/TextField';
 
 class Artist extends React.Component {
   state = {};
@@ -24,8 +26,7 @@ class Artist extends React.Component {
       <div className="artist">
         <fieldset>
           <legend>Artist Name:</legend>
-          <input
-            type="text"
+          <TextField
             value={artist.name}
             onChange={(event) => this.change('name', event.target.value)}
           />
@@ -33,7 +34,9 @@ class Artist extends React.Component {
 
         <fieldset>
           <legend>Description:</legend>
-          <textarea
+          <TextField
+            multiline
+            rows={3}
             value={artist.description}
             onChange={(event) => this.change('description', event.target.value)}
           />
@@ -41,14 +44,12 @@ class Artist extends React.Component {
 
         <fieldset>
           <legend>Record label:</legend>
-          <input
-            type="text"
+          <TextField
             value={artist.label}
             onChange={(event) => this.change('label', event.target.value)}
           />
         </fieldset>
-
-        <button
+        <PrimaryButton
           onClick={async () => {
             const { artist } = this.state;
             const initalPost = await api('/artists/' + artist.id, {
@@ -63,9 +64,9 @@ class Artist extends React.Component {
           }}
         >
           Save
-        </button>
+        </PrimaryButton>
 
-        <button
+        <PrimaryButton
           onClick={async () => {
             const { artist } = this.state;
             const artistToDelete = await api('/artists/' + artist.id, {
@@ -78,7 +79,7 @@ class Artist extends React.Component {
           }}
         >
           Delete
-        </button>
+        </PrimaryButton>
       </div>
     );
   }
