@@ -24,7 +24,7 @@ const Artist =
     },
     data: {
       type: DataTypes.BLOB('long'),
-      allowNull: false,
+      allowNull: true,
     },
   });
 
