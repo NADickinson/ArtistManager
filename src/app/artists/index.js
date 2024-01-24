@@ -65,7 +65,7 @@ export default class Artists extends React.Component {
                     backgroundColor: 'rgba(250, 139, 255,0.3);',
                   },
                 }}
-                placeholder="description"
+                placeholder="Description"
                 onChange={(e) => {
                   this.setState({ descriptionToAdd: e.target.value });
                 }}
@@ -98,7 +98,16 @@ export default class Artists extends React.Component {
           Add
         </PrimaryButton>
 
-        {this.renderList()}
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            width: '100%',
+          }}
+        >
+          {this.renderList()}
+        </div>
       </div>
     );
   }
