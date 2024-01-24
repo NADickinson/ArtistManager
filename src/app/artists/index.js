@@ -19,51 +19,84 @@ export default class Artists extends React.Component {
   render() {
     return (
       <div className="artists_container">
-        <div className="artists_menu">
-          <TextField
-            placeholder="name"
-            onChange={(e) => {
-              this.setState({ nameToAdd: e.target.value });
-            }}
-          ></TextField>
-          <TextField
-            placeholder="Label"
-            onChange={(e) => {
-              this.setState({ labelToAdd: e.target.value });
-            }}
-          ></TextField>
-          <TextField
-            type="text"
-            placeholder="description"
-            onChange={(e) => {
-              this.setState({ descriptionToAdd: e.target.value });
-            }}
-          ></TextField>
-          <PrimaryButton
-            onClick={async () => {
-              if (this.state.nameToAdd === undefined) {
-                return;
-              }
-
-              await api('/artists', {
-                method: 'PUT',
-                body: {
-                  name: this.state.nameToAdd,
-                  label: this.state.labelToAdd,
-                  description: this.state.descriptionToAdd,
-                },
-              });
-
-              const data = await api('/artists');
-
-              this.setState({
-                data,
-              });
-            }}
-          >
-            Add
-          </PrimaryButton>
+        <div className="width_fill">
+          <div className="artist_form">
+            <div style={{ flex: 1 }}>
+              <TextField
+                borderless={true}
+                styles={{
+                  field: {
+                    backgroundColor: 'rgba(250, 139, 255,0.3);',
+                  },
+                }}
+                placeholder="Name"
+                onChange={(e) => {
+                  this.setState({ nameToAdd: e.target.value });
+                }}
+              ></TextField>
+            </div>
+          </div>
         </div>
+        <div className="width_fill">
+          <div className="artist_form">
+            <div style={{ flex: 1 }}>
+              <TextField
+                borderless={true}
+                styles={{
+                  field: {
+                    backgroundColor: 'rgba(250, 139, 255,0.3);',
+                  },
+                }}
+                placeholder="Label"
+                onChange={(e) => {
+                  this.setState({ labelToAdd: e.target.value });
+                }}
+              ></TextField>
+            </div>
+          </div>
+        </div>
+        <div className="width_fill">
+          <div className="artist_form">
+            <div style={{ flex: 1 }}>
+              <TextField
+                borderless={true}
+                styles={{
+                  field: {
+                    backgroundColor: 'rgba(250, 139, 255,0.3);',
+                  },
+                }}
+                placeholder="description"
+                onChange={(e) => {
+                  this.setState({ descriptionToAdd: e.target.value });
+                }}
+              ></TextField>
+            </div>
+          </div>
+        </div>
+        <PrimaryButton
+          onClick={async () => {
+            if (this.state.nameToAdd === undefined) {
+              return;
+            }
+
+            await api('/artists', {
+              method: 'PUT',
+              body: {
+                name: this.state.nameToAdd,
+                label: this.state.labelToAdd,
+                description: this.state.descriptionToAdd,
+              },
+            });
+
+            const data = await api('/artists');
+
+            this.setState({
+              data,
+            });
+          }}
+        >
+          Add
+        </PrimaryButton>
 
         {this.renderList()}
       </div>
