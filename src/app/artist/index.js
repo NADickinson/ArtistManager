@@ -81,6 +81,29 @@ class Artist extends React.Component {
           </div>
         </div>
         <div className="width_fill" style={{ gap: '20px' }}>
+          {/* <input
+            type="file"
+            onChange={(event) => {
+              const file = event.target.files[0];
+              this.setState({ file: file });
+              console.log(this.state.file);
+            }}
+          ></input>
+          <button
+            style={{ height: '100px', width: '100px' }}
+            onClick={async () => {
+              const { artist } = this.state;
+              const formData = new FormData();
+              formData.append('image', this.state.file);
+              const imagePost = await api('/upload/' + artist.id, {
+                method: 'POST',
+                body: formData,
+              });
+            }}
+          >
+            {'upload!'}
+          </button> */}
+
           <PrimaryButton
             onClick={async () => {
               const { artist } = this.state;

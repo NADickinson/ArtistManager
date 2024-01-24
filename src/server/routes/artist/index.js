@@ -1,8 +1,32 @@
 const express = require('express');
+const multer = require('multer');
+
+const storage = multer.memoryStorage();
+
+const upload = multer({ storage: storage });
 
 const { Artist, sequelize } = require('../../database');
 
 module.exports = function (router) {
+  /**
+   * upload an image
+   */
+
+  // router.post('/upload/:id', upload.single('image'), async function (req, res) {
+  //   const artist = await Artist.findByPk(req.params.id);
+  //   console.log(req);
+  //   const updatedArtist = await Artist.update(
+  //     {
+  //       data: req.file.buffer,
+  //     },
+  //     {
+  //       where: { id: artist.id },
+  //     }
+  //   );
+
+  //   res.json(artist);
+  // });
+
   /**
    * List artists
    */
