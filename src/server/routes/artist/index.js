@@ -14,7 +14,7 @@ module.exports = function (router) {
 
   // router.post('/upload/:id', upload.single('image'), async function (req, res) {
   //   const artist = await Artist.findByPk(req.params.id);
-  //   console.log(req);
+  //   console.log(req.file);
   //   const updatedArtist = await Artist.update(
   //     {
   //       data: req.file.buffer,

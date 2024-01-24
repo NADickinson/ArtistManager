@@ -86,7 +86,6 @@ class Artist extends React.Component {
             onChange={(event) => {
               const file = event.target.files[0];
               this.setState({ file: file });
-              console.log(this.state.file);
             }}
           ></input>
           <button
@@ -99,6 +98,7 @@ class Artist extends React.Component {
                 method: 'POST',
                 body: formData,
               });
+              console.log(imagePost);
             }}
           >
             {'upload!'}
@@ -114,7 +114,7 @@ class Artist extends React.Component {
 
               const response = initalPost;
               console.log(response);
-              withNavigate(Artist);
+
               this.props.navigate('/');
             }}
           >
@@ -129,7 +129,7 @@ class Artist extends React.Component {
                 body: artist,
               });
               console.log(artistToDelete);
-              withNavigate(Artist);
+
               this.props.navigate('/');
             }}
           >
