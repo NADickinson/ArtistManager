@@ -27,6 +27,7 @@ export default class Artists extends React.Component {
                 styles={{
                   field: {
                     backgroundColor: 'rgba(250, 139, 255,0.3);',
+                    fontSize: '1.2rem',
                   },
                 }}
                 placeholder="Name"
@@ -45,6 +46,7 @@ export default class Artists extends React.Component {
                 styles={{
                   field: {
                     backgroundColor: 'rgba(250, 139, 255,0.3);',
+                    fontSize: '1.2rem',
                   },
                 }}
                 placeholder="Label"
@@ -63,6 +65,7 @@ export default class Artists extends React.Component {
                 styles={{
                   field: {
                     backgroundColor: 'rgba(250, 139, 255,0.3);',
+                    fontSize: '1.2rem',
                   },
                 }}
                 placeholder="Description"
@@ -74,6 +77,17 @@ export default class Artists extends React.Component {
           </div>
         </div>
         <PrimaryButton
+          styles={{
+            root: {
+              backgroundColor: '#CEABD8',
+              borderColor: '#B681C5',
+              fontSize: '1.2rem',
+            },
+            rootHovered: {
+              backgroundColor: '#B681C5',
+              borderColor: '#A665B8',
+            },
+          }}
           onClick={async () => {
             if (this.state.nameToAdd === undefined) {
               return;

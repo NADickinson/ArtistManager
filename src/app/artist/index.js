@@ -33,6 +33,7 @@ class Artist extends React.Component {
                 styles={{
                   field: {
                     backgroundColor: 'rgba(250, 139, 255,0.3);',
+                    fontSize: '1.2rem',
                   },
                 }}
                 value={artist.name}
@@ -51,6 +52,7 @@ class Artist extends React.Component {
                 styles={{
                   field: {
                     backgroundColor: 'rgba(250, 139, 255,0.3)',
+                    fontSize: '1.2rem',
                   },
                 }}
                 multiline
@@ -72,6 +74,7 @@ class Artist extends React.Component {
                 styles={{
                   field: {
                     backgroundColor: 'rgba(250, 139, 255,0.3);',
+                    fontSize: '1.2rem',
                   },
                 }}
                 value={artist.label}
@@ -105,6 +108,17 @@ class Artist extends React.Component {
           </button> */}
 
           <PrimaryButton
+            styles={{
+              root: {
+                backgroundColor: '#CEABD8',
+                borderColor: '#B681C5',
+                fontSize: '1.2rem',
+              },
+              rootHovered: {
+                backgroundColor: '#B681C5',
+                borderColor: '#A665B8',
+              },
+            }}
             onClick={async () => {
               const { artist } = this.state;
               const initalPost = await api('/artists/' + artist.id, {
@@ -122,6 +136,17 @@ class Artist extends React.Component {
           </PrimaryButton>
 
           <PrimaryButton
+            styles={{
+              root: {
+                backgroundColor: '#CEABD8',
+                borderColor: '#B681C5',
+                fontSize: '1.2rem',
+              },
+              rootHovered: {
+                backgroundColor: '#B681C5',
+                borderColor: '#A665B8',
+              },
+            }}
             onClick={async () => {
               const { artist } = this.state;
               const artistToDelete = await api('/artists/' + artist.id, {
