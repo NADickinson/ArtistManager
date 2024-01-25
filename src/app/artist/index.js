@@ -84,7 +84,7 @@ class Artist extends React.Component {
             </div>
           </div>
         </div>
-        <div className="width_fill" style={{ gap: '20px' }}>
+        <div className="width_fill" style={{ gap: '1.25rem' }}>
           {/* <input
             type="file"
             onChange={(event) => {
