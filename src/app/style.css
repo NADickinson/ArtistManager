@@ -86,3 +86,7 @@ body {
   justify-content: center;
   width: 80%;
 }
+
+.table_header {
+  font-size: 1.5rem;
+}

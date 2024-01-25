@@ -134,9 +134,9 @@ export default class Artists extends React.Component {
       <table className="artists_list">
         <thead>
           <tr>
-            <th>Artist</th>
-            <th>Label</th>
-            <th>Description</th>
+            <th className="table_header">Artist</th>
+            <th className="table_header">Label</th>
+            <th className="table_header">Description</th>
           </tr>
         </thead>
         <tbody>{this.state.data.map(this.renderListItem)}</tbody>
