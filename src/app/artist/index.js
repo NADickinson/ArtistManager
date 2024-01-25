@@ -3,9 +3,10 @@ import { withParams, withNavigate } from '../router-utils';
 import api from '../api';
 import { PrimaryButton } from '@fluentui/react/lib/Button';
 import { TextField } from '@fluentui/react/lib/TextField';
+import { ErrorMessage } from '../customComponents/ErrorMessage';
 
 class Artist extends React.Component {
-  state = {};
+  state = { errorOpacity: 0 };
 
   async componentDidMount() {
     const { id: artistId } = this.props.params;
@@ -120,6 +121,14 @@ class Artist extends React.Component {
               },
             }}
             onClick={async () => {
+              if (!this.state.artist.name) {
+                this.setState({ errorOpacity: 1 });
+                setTimeout(() => {
+                  this.setState({ errorOpacity: 0 });
+                }, 3000);
+
+                return;
+              }
               const { artist } = this.state;
               const initalPost = await api('/artists/' + artist.id, {
                 method: 'POST',
@@ -161,6 +170,7 @@ class Artist extends React.Component {
             Delete
           </PrimaryButton>
         </div>
+        <ErrorMessage opacity={this.state.errorOpacity} />
       </div>
     );
   }

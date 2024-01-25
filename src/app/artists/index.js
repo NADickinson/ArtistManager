@@ -3,9 +3,10 @@ import { NavLink } from 'react-router-dom';
 import { PrimaryButton } from '@fluentui/react/lib/Button';
 import { TextField } from '@fluentui/react/lib/TextField';
 import api from '../api';
+import { ErrorMessage } from '../customComponents/ErrorMessage';
 
 export default class Artists extends React.Component {
-  state = {};
+  state = { errorOpacity: 0 };
 
   async componentDidMount() {
     // load the artists from the backend
@@ -89,7 +90,12 @@ export default class Artists extends React.Component {
             },
           }}
           onClick={async () => {
-            if (this.state.nameToAdd === undefined) {
+            if (!this.state.nameToAdd) {
+              this.setState({ errorOpacity: 1 });
+              setTimeout(() => {
+                this.setState({ errorOpacity: 0 });
+              }, 3000);
+
               return;
             }
 
@@ -111,7 +117,7 @@ export default class Artists extends React.Component {
         >
           Add
         </PrimaryButton>
-
+        <ErrorMessage opacity={this.state.errorOpacity} />
         <div
           style={{
             display: 'flex',
